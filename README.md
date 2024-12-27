@@ -57,6 +57,9 @@ docker-compose up -d --build
 ## Documentation
 https://aciops-documentation.infratocode.com/installation
 
+## Video Playlist
+https://www.youtube.com/playlist?list=PLGDLooVCc13MYmTMZrhHDCLZ6h0KOvZLT
+
 ## Contact
 https://infratocode.com/contact
 
