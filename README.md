@@ -28,12 +28,35 @@ Specify a source IP and destination IP to determine if a particular port is perm
 
 
 
-## Technology Stack
-- Deployment: Docker
-
 ## Getting Started
 - Follow the installation procedure on https://aciops-documentation.infratocode.com/installation
 
-### Prerequisites
-- Docker installed on your machine.
+
+## Prerequisites
+- Deployment: Docker and Docker Compose
+
+## Installation
+* Create a file named `docker-compose.yaml` and insert the provided docker-compose configuration into this file.
+* Create a file named `Dockerfile` and insert the provided Dockerfile configuration into this file.
+
+The directory should initially look like the tree map below.
+
+```plaintext
+
+directory/
+├── Dockerfile
+└── docker-compose.yaml
+
+```
+
+* Run the command below to download and instantiate all the containers.
+```bash
+docker-compose up -d --build
+```
+
+## Documentation
+https://aciops-documentation.infratocode.com/installation
+
+## Contact
+https://infratocode.com/contact
 
