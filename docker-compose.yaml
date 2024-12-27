@@ -1,0 +1,123 @@
+networks:
+  aciops_network:
+ 
+services:
+# <--- SECTION ACIOPS-UI --->
+  aciops-ui:
+    image: infratocode/aciops-ui:latest
+    container_name: aciops-ui
+    networks:
+      - aciops_network
+    depends_on:
+      aciops-server:
+        condition: service_healthy
+        restart: true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      retries: 10
+      timeout: 20s
+      start_period: 10s
+    environment:
+      - BACKEND_URL=http://aciops-server:5000
+    ports:
+      - 443:443
+      - 80:80
+ 
+ 
+# <--- SECTION ACIOPS-SERVER --->
+  aciops-server:
+    image: infratocode/aciops-server:latest
+    container_name: aciops-server
+    networks:
+      - aciops_network
+    volumes:
+      - ./aciops-server/ssh:/root/.ssh
+    depends_on:
+      aciops-db:
+        condition: service_healthy
+        restart: true
+    healthcheck:
+      test: ["CMD", "curl", "-d", "'{}'", "-X", "POST", "http://localhost:5000/api/v1/authentication/login"]
+      interval: 30s
+      retries: 5
+      start_period: 10s
+      timeout: 10s 
+    environment:
+      - POSTGRES_IP=aciops-db
+      - POSTGRES_PORT=5432
+    ports:
+      - 5000:5000
+    
+    # command:  bash -c "gunicorn --workers 10 --threads 2 --chdir /app --bind 0.0.0.0:5000 app:app --timeout 600 "
+    # command:  bash -c "sleep infinity"
+ 
+ 
+# <--- SECTION ACIOPS-DB --->
+  aciops-db:
+    image: infratocode/aciops-db:latest
+    container_name: aciops-db
+    networks:
+      - aciops_network
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+ 
+ 
+# <--- SECTION TERRAFORM SERVER - OPTIONAL --->
+  terraform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: terraform
+    networks:
+      - aciops_network
+    healthcheck:
+      test: ["CMD", "ls"]
+      interval: 30s
+      retries: 10
+      timeout: 20s
+      start_period: 10s
+    restart: always
+    volumes:
+      - ./terraform:/terraform
+      - ./aciops-server/ssh:/root/.ssh
+    container_name: terraform
+    working_dir: /terraform
+    ports:
+      - "2222:22"
+ 
+ 
+# <--- SECTION GITLAB - OPTIONAL --->
+  gitlab:
+    image: gitlab/gitlab-ce
+    container_name: gitlab
+    restart: always
+    networks:
+      - aciops_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/-/health"]
+      interval: 30s
+      retries: 10
+      timeout: 20s
+      start_period: 10s
+    environment:
+      GITLAB_ROOT_PASSWORD: Ch@ng3Th!sP@ssw0rd
+      GITLAB_OMNIBUS_CONFIG: |
+        puma['worker_processes'] = 0
+    ports:
+      - "8080:80"
+      - "4431:443"
+      - "2221:22"
+    volumes:
+      - "./gitlab/config:/etc/gitlab"
+      - "./gitlab/logs:/var/log/gitlab"
+      - "./gitlab/data:/var/opt/gitlab"
+ 
