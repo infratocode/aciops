@@ -49,13 +49,16 @@ docker-compose up -d --build
 ```
 
 ## Documentation
-https://aciops-documentation.infratocode.com
 <a href="https://https://aciops-documentation.infratocode.com" target="_blank">ACIOps Documentation</a>
 
 
 ## Video Playlist
-https://www.youtube.com/playlist?list=PLGDLooVCc13MYmTMZrhHDCLZ6h0KOvZLT
+<a href="https://www.youtube.com/playlist?list=PLGDLooVCc13MYmTMZrhHDCLZ6h0KOvZLT" target="_blank">ACIOps Youtube Videos</a>
+
+## Homepage
+<a href="https://infratocode.com" target="_blank">ACIOps Homepage</a>
 
 ## Contact
-https://infratocode.com/contact
+<a href="https://infratocode.com/contact" target="_blank">ACIOps Contact</a>
+
 
