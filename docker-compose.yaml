@@ -49,9 +49,7 @@ services:
     ports:
       - 5000:5000
     
-    # command:  bash -c "gunicorn --workers 10 --threads 2 --chdir /app --bind 0.0.0.0:5000 app:app --timeout 600 "
-    # command:  bash -c "sleep infinity"
- 
+
  
 # <--- SECTION ACIOPS-DB --->
   aciops-db:
