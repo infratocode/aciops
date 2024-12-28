@@ -26,11 +26,6 @@ ACIOps integrates with OpenAI to assist engineers in diagnosing fabric faults an
 Specify a source IP and destination IP to determine if a particular port is permitted between the specified EPGs. The Contracts Inspector provides visibility into all related contracts, subjects, and filters configured for the source and destination EPG combination. Additionally, it shows where these contracts are consumed and provided across other EPGs, offering a comprehensive view of access control configurations within the ACI environment.
 
 
-
-## Getting Started
-- Follow the installation procedure on https://aciops-documentation.infratocode.com/installation
-
-
 ## Prerequisites
 - Deployment: Docker and Docker Compose
 
@@ -54,7 +49,7 @@ docker-compose up -d --build
 ```
 
 ## Documentation
-https://aciops-documentation.infratocode.com/installation
+https://aciops-documentation.infratocode.com
 
 ## Video Playlist
 https://www.youtube.com/playlist?list=PLGDLooVCc13MYmTMZrhHDCLZ6h0KOvZLT
