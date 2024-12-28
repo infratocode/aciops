@@ -50,6 +50,8 @@ docker-compose up -d --build
 
 ## Documentation
 https://aciops-documentation.infratocode.com
+<a href="https://https://aciops-documentation.infratocode.com" target="_blank">ACIOps Documentation</a>
+
 
 ## Video Playlist
 https://www.youtube.com/playlist?list=PLGDLooVCc13MYmTMZrhHDCLZ6h0KOvZLT
