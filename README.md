@@ -10,7 +10,6 @@ ACIOps is a comprehensive management tool designed specifically for Day 2 operat
 
 ## Features ✨
 
-## Key Features
 **Infrastructure Monitoring**: <br/> 
 In Cisco ACI, all elements are organized into classes, covering configurations, interface states, routing tables, fault data, health metrics, and more. ACIOps provides comprehensive access to these classes for in-depth monitoring. It allows users to set alerts for changes, threshold breaches, or missing parameters within a class. This real-time monitoring enables quick response to network shifts, enhancing infrastructure oversight and ensuring optimal performance through proactive management and rapid troubleshooting.
 
