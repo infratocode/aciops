@@ -4,7 +4,7 @@ networks:
 services:
 # <--- SECTION ACIOPS-UI --->
   aciops-ui:
-    image: infratocode/aciops-ui:latest
+    image: infratocode/aciops-ui:1.0
     container_name: aciops-ui
     networks:
       - aciops_network
@@ -27,7 +27,7 @@ services:
  
 # <--- SECTION ACIOPS-SERVER --->
   aciops-server:
-    image: infratocode/aciops-server:latest
+    image: infratocode/aciops-server:1.0
     container_name: aciops-server
     networks:
       - aciops_network
@@ -53,7 +53,7 @@ services:
  
 # <--- SECTION ACIOPS-DB --->
   aciops-db:
-    image: infratocode/aciops-db:latest
+    image: infratocode/aciops-db:1.0
     container_name: aciops-db
     networks:
       - aciops_network
